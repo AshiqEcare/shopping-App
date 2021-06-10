@@ -7,12 +7,13 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   {
-    path: 'recipes', component: RecipesComponent, children: [
+    path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard], children: [
       { path: '', component: RecipesStartComponent },
       { path: 'new', component: RecipeEditComponent },
       { path: ':id', component: RecipesDetailComponent, resolve: [RecipesResolverService] },

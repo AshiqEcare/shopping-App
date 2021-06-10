@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../auth/auth.service';
 import { RecipeService } from './../recipes/recipe.service';
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   userSub: Subscription;
 
-  constructor(private recipeService: RecipeService, private dataStorageService: DataStorageService, private authService: AuthService) { }
+  constructor(private recipeService: RecipeService, private dataStorageService: DataStorageService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.userSub = this.authService.user.subscribe(user => {
@@ -34,6 +35,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onFetchRecipe() {
     this.dataStorageService.getRecipes().subscribe()
+  }
+
+  onLogout() {
+    this.authService.logout()
   }
 
   ngOnDestroy(): void {

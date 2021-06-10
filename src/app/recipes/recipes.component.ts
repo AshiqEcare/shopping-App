@@ -1,3 +1,4 @@
+import { DataStorageService } from './../shared/data-storage.service';
 import { RecipeService } from './recipe.service';
 import { Recipe } from "./recipe.model";
 import { Component, OnInit } from "@angular/core";
@@ -10,11 +11,17 @@ import { Component, OnInit } from "@angular/core";
 export class RecipesComponent implements OnInit {
   selectedRecipe: Recipe;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService, private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
     this.recipeService.recipeSelected.subscribe((recipe: Recipe) => {
       this.selectedRecipe = recipe;
     })
+
+    this.onFetchRecipe()
+  }
+
+  onFetchRecipe() {
+    this.dataStorageService.getRecipes().subscribe()
   }
 }
