@@ -7,6 +7,13 @@ export const environment = {
   firebaseApiKEY: 'AIzaSyCkEoXVOeEdjVlz5s7ju-JwDhgrUcI6mdY'
 };
 
+// for firebase deploy: In angular.json
+// "outputPath": "dist/shoppingApp",
+
+// for gitpages deploy: In angular.json
+// "outputPath": "docs",
+
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
